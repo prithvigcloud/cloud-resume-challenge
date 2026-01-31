@@ -1,5 +1,0 @@
-bucket_name = "andrewbrownresume.org"
-function_name = "view_counter"
-region       = "us-east1"
-function_bucket_name = "crc-func-12353"
-function_object_name = "function-37791bceee3eab153d2ef11cc15025b5.zip"
