@@ -1,1 +1,11 @@
-#template to create bucket (s3)
+AWSTemplateFormatVersion: 2010-09-09
+Description: Infrastructure for our AyurBucks company
+Parameters:
+  BucketName:
+    Type: string
+
+Resources:
+  Bucket:
+    Properties:
+      Type: AWS::S3::Bucket
+      BucketName: !Ref BucketName

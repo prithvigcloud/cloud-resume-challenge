@@ -1,0 +1,26 @@
+---
+- name: Deploy CloudFormation Stack
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  
+  vars_files:
+    - vaults/prod.yml
+  
+  tasks:
+    - name: Deploy CloudFormation stack
+      amazon.aws.cloudformation:
+        stack_name: "{{ stack_name }}"
+        state: present
+        region: "{{ aws_region }}"
+        template: "{{ cfn_template_path }}"
+        template_parameters: "{{ cfn_parameters }}"
+        tags: "{{ stack_tags }}"
+        capabilities:
+          - CAPABILITY_IAM
+          - CAPABILITY_NAMED_IAM
+      register: stack_result
+    
+    - name: Display stack outputs
+      debug:
+        msg: "{{ stack_result.stack_outputs }}"
